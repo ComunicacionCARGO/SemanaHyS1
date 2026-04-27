@@ -335,11 +335,11 @@
 
         function finishAndShare(method) {
             const score = updateLiveScore();
-            let report = `👷 REPORTE SEGURIDAD 2026\n`;
-            report += `👤 ${userData.name.toUpperCase()} (ID: ${userData.id})\n`;
-            report += `🎯 PUNTAJE CRUCIGRAMA: ${score}%\n\n`;
+            let report = `• REPORTE SEGURIDAD 2026\n`;
+            report += `• ${userData.name.toUpperCase()} (ID: ${userData.id})\n`;
+            report += `% PUNTAJE CRUCIGRAMA: ${score}%\n\n`;
             
-            report += `🧩 DETALLE:\n`;
+            report += `• DETALLE:\n`;
             wordDefinitions.forEach(d => {
                 let current = "";
                 for(let i=0; i<d.name.length; i++){
@@ -347,11 +347,11 @@
                     const c = d.dir === 'H' ? d.start[1]+i : d.start[1];
                     current += document.getElementById(`in-${r}-${c}`).value || "_";
                 }
-                const isOk = current.toUpperCase() === d.name ? "✅" : "❌";
+                const isOk = current.toUpperCase() === d.name ? "✓" : "X";
                 report += `${d.id}. ${current.toUpperCase()} ${isOk}\n`;
             });
 
-            report += `\n📦 ORDEN DE ACCIONES:\n`;
+            report += `\n• ORDEN DE ACCIONES:\n`;
             steps.forEach((s, i) => report += `${i+1}º ${s}\n`);
 
             if(method === 'whatsapp') window.open(`https://wa.me/${ADMIN_CONFIG.whatsapp}?text=${encodeURIComponent(report)}`);
